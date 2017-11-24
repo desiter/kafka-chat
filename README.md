@@ -14,12 +14,11 @@ Unleashconf 2017 - Kafka integration example
 
 ## Kafka Producer CLI
 ```sh
-  $ yarn run producer --broker=host:port --topic=some_topic --group=some_group [--key=the_key]
+  $ yarn run producer --broker=host:port --topic=some_topic [--key=the_key]
 ```
 Paremeters:
   - `--broker` is required unless you are about to connect the local docker-composed default kafka broker
-  - `--topic` desired topic name to subscribe to (defaults to `UnleashChat`)
-  - `--group` (optional) your consumer group (defaults to `test`)
+  - `--topic` desired topic name to send a message to (defaults to `UnleashChat`)
   - `--key` omit unless you want to force total order over all messages sent here
 
 ## Kafka Consumer CLI
