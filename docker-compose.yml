@@ -5,13 +5,36 @@ services:
     image: wurstmeister/zookeeper
     ports:
       - "2181:2181"
-  kafka:
+  kafka1:
     image: wurstmeister/kafka:0.11.0.0
     environment:
-      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_ADVERTISED_HOST_NAME: 192.168.150.64
+      KAFKA_ADVERTISED_PORT: 9091
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_CREATE_TOPICS: "UnleashChat:1:1"
     links:
       - zookeeper
     ports:
+      - "9091:9092"
+  kafka2:
+    image: wurstmeister/kafka:0.11.0.0
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 192.168.150.64
+      KAFKA_ADVERTISED_PORT: 9092
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_CREATE_TOPICS: "OnePartition:1:1"
+    links:
+      - zookeeper
+    ports:
       - "9092:9092"
+  kafka3:
+    image: wurstmeister/kafka:0.11.0.0
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 192.168.150.64
+      KAFKA_ADVERTISED_PORT: 9093
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_CREATE_TOPICS: "ThreePartitions:3:1"
+    links:
+      - zookeeper
+    ports:
+      - "9093:9092"
