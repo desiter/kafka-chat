@@ -11,19 +11,17 @@ module.exports = function initConsumer(kafkaHost, topic, groupId) {
       'enable.auto.commit': true
     })
 
-    consumer.on('ready', (arg, metadata) => {
-      console.log('consumer ready.', arg, metadata);
+    consumer.on('ready', () => {
+      console.log('consumer ready.');
       consumer.subscribe([topic || 'UnleashChat'])
       consumer.consume();
       resolve(consumer)
     })
     consumer.on('data', function(msg) {
-      // consumer.commitMessage(msg);
-
-      // Output the actual message contents
-      console.log(JSON.stringify(msg));
-      //console.log(`${new Date(msg.timestamp)} ${msg.key.toString()}: ${msg.value.toString()}`);
-
+      const time = (new Date(msg.timestamp)).toLocaleTimeString()
+      const key = (msg.key || '').toString()
+      const value = (msg.value || '').toString()
+      console.log(`${time} ${key}: ${value}`);
     });
     consumer.on('event.error', console.error)
     consumer.on('disconnected', () => {

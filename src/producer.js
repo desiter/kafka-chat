@@ -8,15 +8,14 @@ const io = readline.createInterface({
 });
 let producer
 
-console.log('initializing kafka...\n')
+console.log('initializing kafka...')
 initProducer(argv.broker)
   .then(producer => {
     io.setPrompt('> ')
     io.prompt()
     io.on('line', function(line){
         try {
-          console.log(argv.topic || 'UnleashChat', -1, new Buffer(line), argv.key || 'Test')
-          producer.produce(argv.topic || 'UnleashChat', -1, new Buffer(line), argv.key || 'Test')
+          producer.produce(argv.topic || 'UnleashChat', argv.partition, new Buffer(line), argv.key)
         } catch (err) {
           console.error('A problem occurred when sending our message')
           console.error(err)
