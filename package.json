@@ -1,0 +1,30 @@
+{
+  "name": "kafka-chat",
+  "version": "1.0.0",
+  "description": "Unleashconf 2017 - Kafka integration example",
+  "main": "src/index.js",
+  "scripts": {
+    "producer": "node src/producer.js",
+    "consumer": "node src/consumer.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/desiter/kafka-chat.git"
+  },
+  "keywords": [
+    "kafka",
+    "example",
+    "unleashconf"
+  ],
+  "author": "Michal Nawrot <m.nawrot@desiter.pl>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/desiter/kafka-chat/issues"
+  },
+  "homepage": "https://github.com/desiter/kafka-chat#readme",
+  "dependencies": {
+    "minimist": "^1.2.0",
+    "node-rdkafka": "^2.2.0"
+  }
+}
