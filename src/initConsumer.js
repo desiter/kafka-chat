@@ -8,12 +8,13 @@ module.exports = function initConsumer(kafkaHost, topic, groupId) {
       //'debug': 'all',
       'metadata.broker.list': kafkaHost || DEFAULT_KAFKA_HOST,
       'group.id': groupId || 'test',
+      'auto.offset.reset': 'beginning',
       'enable.auto.commit': true
     })
 
     consumer.on('ready', () => {
       console.log('consumer ready.');
-      consumer.subscribe([topic || 'UnleashChat'])
+      consumer.subscribe((topic || 'UnleashChat').split(','))
       consumer.consume();
       resolve(consumer)
     })
