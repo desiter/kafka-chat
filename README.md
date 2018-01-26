@@ -32,7 +32,11 @@ Paremeters:
   - `--group` (optional) your consumer group (defaults to `test`)
 
 ## Local Kafka cluster (docker-compose)
-To spin up your own local kafka cluster run the following command
+You can spin up your own local kafka cluster by running the following command
 ```sh
+  $ nano ./docker-compose.yml # put your IP address first
   $ docker-compose up -d
 ```
+
+**NOTICE**: the docker based Kafka cluster requires your machine IP address to handle broker host advertising.
+Since localhost or 127.0.0.1 can be resolved only locally the cluster will not work if you're connecting from another machine.
