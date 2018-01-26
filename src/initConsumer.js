@@ -8,8 +8,8 @@ module.exports = function initConsumer(kafkaHost, topic, groupId) {
       //'debug': 'all',
       'metadata.broker.list': kafkaHost || DEFAULT_KAFKA_HOST,
       'group.id': groupId || 'test',
-      'auto.offset.reset': 'beginning',
-      'enable.auto.commit': true
+      'auto.offset.reset': 'earliest',
+      'enable.auto.commit': false
     })
 
     consumer.on('ready', () => {

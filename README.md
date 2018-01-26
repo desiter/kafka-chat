@@ -23,7 +23,7 @@ Paremeters:
 
 ## Kafka Consumer CLI
 ```sh
-  $ yarn run consumer --broker=host:port --topic=some_topic --group=some_group [--key=the_key]
+  $ yarn run consumer --broker=host:port --topic=some_topic --group=some_group
 ```
 
 Paremeters:
